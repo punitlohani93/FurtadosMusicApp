@@ -30,7 +30,7 @@ var styles = StyleSheet.create({
 	mainContent: {
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'center',
+		justifyContent: 'space-around',
 		backgroundColor: 'transparent'
 	},
 	appLogoHolder: {
@@ -58,15 +58,24 @@ var styles = StyleSheet.create({
 	},
 	buttonHolder: {
 		flexDirection: 'row',
-		justifyContent: 'space-around'
+		justifyContent: 'center'
 	},
 	iconButtonHolder: {
-		justifyContent: 'center',
-		width:200,
-		height:200,
-		borderRadius:100
+		flexDirection: 'column'
+	},
+	fabButtonWrapper: {
+		alignSelf: 'center'
+	},
+	fab: {
+		backgroundColor: '#FFFFFF',
+		height: 30,
+		width: 30
 	}
 });
+
+const ColoredFab = MKButton.coloredFab()
+  .withStyle(styles.fab)
+  .build();
 
 class Main extends React.Component {
 	constructor() {
@@ -103,36 +112,49 @@ class Main extends React.Component {
 						<View style={styles.buttonHolder}>
 							<MKButton
 							  backgroundColor='#FFFFFF'
+							  height={35}
+							  width={90}
 							  shadowRadius={2}
 							  shadowOffset={{width:0, height:2}}
 							  shadowOpacity={.7}
 							  shadowColor="black"
-							  borderRadius={5}
+							  borderRadius={3}
+							  margin={5}
+							  justifyContent='center'
 							  onPress={() => {
 							    console.log('hi, raised button!');
 							  }}>
 							  <Text pointerEvents="none"
-							        style={{color: 'black', fontWeight: '400', fontSize: 14}}>
+							        style={{textAlign: 'center', color: 'black', backgroundColor: 'transparent', fontWeight: '600', fontSize: 14}}>
 							    SIGN IN
 							  </Text>
 							</MKButton>
 							<MKButton
 							  backgroundColor="#FFFFFF"
+							  height={35}
+							  width={90}
+							  borderRadius={3}
 							  shadowRadius={2}
 							  shadowOffset={{width:0, height:2}}
 							  shadowOpacity={.7}
+							  margin={5}
+							  justifyContent='center'
 							  shadowColor="black"
 							  onPress={() => {
 							    console.log('hi, raised button!');
 							  }}>
 							  <Text pointerEvents="none"
-							        style={{color: '#DE1931', fontWeight: '400', fontSize: 14}}>
+							        style={{textAlign: 'center', color: '#DE1931', backgroundColor: 'transparent', fontWeight: '600', fontSize: 14}}>
 							    REGISTER
 							  </Text>
 							</MKButton>
 						</View>
 						<View style={styles.iconButtonHolder}>
-							
+							<View style={styles.fabButtonWrapper}>
+								<ColoredFab>
+	              					<Icon name="angle-down" size={20} color= '#DE1931' />
+	            				</ColoredFab>
+            				</View>
 						</View>
 					</View>
 				</Image>
